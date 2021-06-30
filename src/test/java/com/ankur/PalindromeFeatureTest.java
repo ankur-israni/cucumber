@@ -1,15 +1,23 @@
 package com.ankur;
 
+import cucumber.api.java.BeforeStep;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+import org.junit.Before;
 
 
 public class PalindromeFeatureTest {
 
     private String input;
     private boolean isPalindrome;
+    private PalindromeService palindromeService;
+
+    @BeforeStep
+    public void setup(){
+        palindromeService = new PalindromeService();
+    }
 
 
     @Given("I entered string {string}")
@@ -19,7 +27,8 @@ public class PalindromeFeatureTest {
 
     @When("I test it for Palindrome")
     public void iTestItForPalindrome() {
-        isPalindrome = input.equalsIgnoreCase(new StringBuilder(input).reverse().toString());
+        isPalindrome = palindromeService.isPalindrome(input);
+
     }
 
     @Then("the result should be {string}")
