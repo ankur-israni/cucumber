@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 
 
-public class PalindromeFeatureTest {
+public class PalindromeServiceTest {
 
     private String input;
     private boolean isPalindrome;
